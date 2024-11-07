@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Matrícula</title>
+    <script>
+        function mostrarDataHora() {
+            // Crear un objecte Date amb la data i hora actuals
+            const dataActual = new Date();
+
+            // Obtenir el dia, mes, any, hora, minuts
+            const dia = String(dataActual.getDate()).padStart(2, '0'); // Afegir 0 davant si és un dígit
+            const mes = String(dataActual.getMonth() + 1).padStart(2, '0'); // Els mesos comencen des de 0
+            const any = dataActual.getFullYear();
+            const hora = String(dataActual.getHours()).padStart(2, '0'); // Afegir 0 davant si és un dígit
+            const minuts = String(dataActual.getMinutes()).padStart(2, '0'); // Afegir 0 davant si és un dígit
+
+            // Crear la cadena de data i hora en el format desitjat
+            const dataHora = `${dia}.${mes}.${any} | ${hora}:${minuts}`;
+
+            // Mostrar la data i hora a l'element HTML amb id="dataHora"
+            document.getElementById('dataHora').innerText = dataHora;
+        }
+
+        // Cridar la funció quan la pàgina es carrega
+        window.onload = mostrarDataHora;
+    </script>
+    <style>
+        /* Estils generals */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Part superior del capçal */
+        .header-top {
+            background-color: #333;
+            color: white;
+            padding: 20px 20px;
+            display: flex;
+            justify-content: flex-end;
+            font-size: 14px;
+        }
+
+        .header-top a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+        }
+
+        .idiomes-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .idiomes-dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 120px;
+            z-index: 1;
+        }
+
+        .idiomes-dropdown-content a {
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .idiomes-dropdown-content a:hover {
+            background-color: #555;
+        }
+
+        .idiomes-dropdown:hover .idiomes-dropdown-content {
+            display: block;
+        }
+    </style>
+    <script>
+        function canviarIdioma(idioma) {
+            // Aquí afegiries la lògica per canviar l'idioma de la pàgina.
+            // Podria ser una redirecció o una actualització del contingut.
+            alert("Canviant l'idioma a: " + idioma);
+            // Exemples:
+            // window.location.href = `/ca`; // Per redirigir a la versió en català
+        }
+    </script>
+    <style>
+        /* Capçalera principal */
+        .main-header {
+            background-color: #253973; /* Color blau */
+            padding: 30px 30px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .main-header img {
+            width: 355px;
+            height: 130px;
+            margin-right: 20px;
+        }
+
+        .main-header .title {
+            font-size: 1.5em;
+            font-weight: bold;
+            flex-grow: 1;
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        /* Estil del formulari de registre */
+        
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0 5px;
+        }
+
+        .container {
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 450px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #777;
+            margin-bottom: 15px;
+            outline: none;
+        }
+        input[type="submit"] {
+            margin-top: 10px;
+            padding: 12px 10px;
+            font-size: 16px;
+            color: white;
+            background-color: #91AC99;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 450px;
+            margin-bottom: 20px;
+        }
+
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+
+        /* Estils del peu de pàgina */
+        .footer {
+            background-color: #253973; /* Blau fosc */
+            color: white;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer .socials {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .footer .socials span {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .footer .socials a img {
+            width: 25px;
+            margin: 0 5px;
+        }
+
+        .footer .info {
+            background-color: #253973; /* Blau fons */
+            color: black;
+            padding: 0px;
+            text-align: left;
+            color: white;
+        }
+
+        .footer .info p {
+            margin: 10px 0;
+        }
+
+        .footer .legal-links {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: -30px; /* Alineació a la part superior dreta */
+            font-size: 14px;
+            padding-bottom: 25px;
+        }
+
+        .footer .legal-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 15px;
+            font-size: 14px;
+        }
+
+        .footer .collaborator {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-top: 15px;
+        }
+
+        .footer .collaborator img {
+            margin-left: 10px;
+            height: 25px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Part superior del capçal -->
+    <div class="header-top">
+        <a href="https://cabrerademar.webmunicipal.diba.cat/altres-continguts/contacte">Contacte</a>
+        <div class="idiomes-dropdown">
+            <a href="#" class="idiomes">Idiomes</a>
+            <div class="idiomes-dropdown-content">
+                <a href="#" onclick="canviarIdioma('Català')">Català</a>
+                <a href="#" onclick="canviarIdioma('Castellà')">Castellà</a>
+                <a href="#" onclick="canviarIdioma('Anglès')">Anglès</a>
+                <a href="#" onclick="canviarIdioma('Alemany')">Alemany</a>
+                <a href="#" onclick="canviarIdioma('Francès')">Francès</a>
+            </div>
+        </div>
+        <span id="dataHora"></span>
+    </div>
+
+    <!-- Capçalera principal -->
+    <div class="main-header">
+        <img src="http://cabrerademar.webmunicipal.diba.cat/themes/cabrerademar/images/logos/header.png" alt="Ajuntament de Cabrera de Mar">
+    </div>
+
+    <!-- Títol de la pàgina i formulari de registre -->
+    <h1>Registrar Matrícula del Cotxe</h1>
+    <p style="text-align: center;">Introdueix el teu DNI i la matrícula del teu cotxe per registrar-la.</p>
+    
+    <div class="container">
+        <form action="#" id="registerForm">
+            <input type="text" id ="dni" placeholder="Introdueix el DNI" required>
+            <br>
+            <input type="text" id="matricula" placeholder="Introdueix la matrícula" required>
+            <br>
+            <input type="submit" value="Registrar matrícula">
+        </form>
+        <p id="resultat"></p>
+        <script>
+            document.getElementById('registerForm').addEventListener('submit', function (e) {
+                e.preventDefault(); // Evita que el formulari es recarregui
+
+            // Obtenir els valors del formulari
+            const dni = document.getElementById('dni').value;
+            const matricula = document.getElementById('matricula').value;
+
+            // Fer la petició AJAX
+            fetch('process_registration.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+            },
+                body: `dni=${encodeURIComponent(dni)}&matricula=${encodeURIComponent(matricula)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Mostrar el missatge de resultat
+                document.getElementById('resultat').innerText = data.message;
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+    </div>
+
+    <!-- Peu de pàgina -->
+    <div class="footer">
+        <!-- Xarxes socials a l'esquerra -->
+        <div class="socials">
+            <span>Xarxes socials:</span>
+            <a href="https://x.com/ajcabrerademar" target="_blank">
+                <img src="http://cabrerademar.webmunicipal.diba.cat/front/view/images/icons/social/twitter.png" alt="Twitter">
+            </a>
+            <a href="https://www.facebook.com/cabrerademar/?locale=ca_ES" target="_blank">
+                <img src="http://cabrerademar.webmunicipal.diba.cat/front/view/images/icons/social/facebook.png" alt="Facebook">
+            </a>
+            <a href="https://www.youtube.com/@ajuntamentcabrerademar5680/featured" target="_blank">
+                <img src="http://cabrerademar.webmunicipal.diba.cat/front/view/images/icons/social/youtube.png" alt="YouTube">
+            </a>
+            <a href="https://www.instagram.com/cabrerademar_cat/" target="_blank">
+                <img src="http://cabrerademar.webmunicipal.diba.cat/front/view/images/icons/social/instagram.png" alt="Instagram">
+            </a>
+        </div>
+        
+        <!-- Enllaços legals alineats a la dreta -->
+        <div class="legal-links">
+            <a href="#">Crèdits</a>
+            <a href="#">Contacte</a>
+            <a href="#">Protecció de dades</a>
+            <a href="#">Avís legal</a>
+            <a href="#">Accessibilitat</a>
+        </div>
+        <div class="info">
+            <p><strong>Ajuntament de Cabrera de Mar</strong></p>
+            <p>Plaça de l'Ajuntament, 5</p>
+            <p>08349 Cabrera de Mar</p>
+            <p>Tel. 937 590 091</p>
+            <p>NIF: P0802900A</p>
+        </div>
+
+    </div>
+
+</body>
+</html>
